@@ -1,5 +1,18 @@
 const grid = document.querySelector(".grid");
+const sizeButton = document.querySelector("button");
 const WIDTH = 600;
+
+const handleNewSize = () => {
+    sizeButton.addEventListener("click", (e) => {
+        let newSize;
+        do {
+            const answer = prompt("Dimensions: ");
+            newSize = Number(answer);
+        } while (isNaN(newSize) || newSize > 64 || newSize < 2);
+        grid.replaceChildren();
+        fillGrid(newSize);
+    })
+}
 
 const createCell = (size) => {
     const cell = document.createElement("div");
@@ -23,3 +36,4 @@ const fillGrid = (size) => {
 }
 
 fillGrid(16);
+handleNewSize();
