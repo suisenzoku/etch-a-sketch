@@ -6,7 +6,12 @@ const createCell = (size) => {
     cell.classList.add("cell");
     cell.style.width = size;
     cell.style.height = size;
+    cell.addEventListener("mouseover", onCellHover);
     return cell;
+}
+
+const onCellHover = (e) => {
+    e.target.style.backgroundColor = "black";
 }
 
 const fillGrid = (size) => {
