@@ -24,7 +24,7 @@ const createCell = (size) => {
 }
 
 const onCellHover = (e) => {
-    e.target.style.backgroundColor = "black";
+    e.target.style.backgroundColor = createRGBColor();
 }
 
 const fillGrid = (size) => {
@@ -33,6 +33,15 @@ const fillGrid = (size) => {
         const cell = createCell(cellSize);
         grid.append(cell);
     }
+}
+
+const createRGBColor = () => {
+    const rgb = [];
+    for (let i = 0; i < 3; i++) {
+        const value = Math.floor(Math.random() * 256);
+        rgb.push(value);
+    }
+    return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
 }
 
 fillGrid(16);
