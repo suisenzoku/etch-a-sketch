@@ -1,6 +1,7 @@
 const grid = document.querySelector(".grid");
 const sizeButton = document.querySelector("button");
 const WIDTH = 600;
+let opacity = 0.1;
 
 const handleNewSize = () => {
     sizeButton.addEventListener("click", (e) => {
@@ -11,6 +12,7 @@ const handleNewSize = () => {
         } while (isNaN(newSize) || newSize > 64 || newSize < 2);
         grid.replaceChildren();
         fillGrid(newSize);
+        opacity = 0.1;
     })
 }
 
@@ -25,6 +27,10 @@ const createCell = (size) => {
 
 const onCellHover = (e) => {
     e.target.style.backgroundColor = createRGBColor();
+    e.target.style.opacity = opacity;
+    if (opacity < 1) {
+        opacity += 0.1;
+    }
 }
 
 const fillGrid = (size) => {
